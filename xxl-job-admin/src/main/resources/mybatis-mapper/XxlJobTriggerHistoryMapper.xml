@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xxl.job.admin.dao.XxlJobTriggerHistoryDao" >
+  <resultMap id="BaseResultMap" type="com.xxl.job.admin.core.model.XxlJobTriggerHistory" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="group_id" property="groupId" jdbcType="BIGINT" />
+    <result column="job_id" property="jobId" jdbcType="BIGINT" />
+    <result column="job_log_id" property="jobLogId" jdbcType="BIGINT" />
+    <result column="handle_code" property="handleCode" jdbcType="INTEGER" />
+    <result column="handle_msg" property="handleMsg" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, group_id, job_id, job_log_id, handle_code, handle_msg, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from XXL_JOB_QRTZ_TRIGGER_HISTORY
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from XXL_JOB_QRTZ_TRIGGER_HISTORY
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xxl.job.admin.core.model.XxlJobTriggerHistory" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into XXL_JOB_QRTZ_TRIGGER_HISTORY (group_id, job_id, job_log_id,
+    handle_code, handle_msg, create_time
+    )
+    values (#{groupId,jdbcType=BIGINT}, #{jobId,jdbcType=BIGINT}, #{jobLogId,jdbcType=BIGINT},
+    #{handleCode,jdbcType=INTEGER}, #{handleMsg,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
+    )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xxl.job.admin.core.model.XxlJobTriggerHistory" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into XXL_JOB_QRTZ_TRIGGER_HISTORY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="groupId != null" >
+        group_id,
+      </if>
+      <if test="jobId != null" >
+        job_id,
+      </if>
+      <if test="jobLogId != null" >
+        job_log_id,
+      </if>
+      <if test="handleCode != null" >
+        handle_code,
+      </if>
+      <if test="handleMsg != null" >
+        handle_msg,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="groupId != null" >
+        #{groupId,jdbcType=BIGINT},
+      </if>
+      <if test="jobId != null" >
+        #{jobId,jdbcType=BIGINT},
+      </if>
+      <if test="jobLogId != null" >
+        #{jobLogId,jdbcType=BIGINT},
+      </if>
+      <if test="handleCode != null" >
+        #{handleCode,jdbcType=INTEGER},
+      </if>
+      <if test="handleMsg != null" >
+        #{handleMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xxl.job.admin.core.model.XxlJobTriggerHistory" >
+    update XXL_JOB_QRTZ_TRIGGER_HISTORY
+    <set >
+      <if test="groupId != null" >
+        group_id = #{groupId,jdbcType=BIGINT},
+      </if>
+      <if test="jobId != null" >
+        job_id = #{jobId,jdbcType=BIGINT},
+      </if>
+      <if test="jobLogId != null" >
+        job_log_id = #{jobLogId,jdbcType=BIGINT},
+      </if>
+      <if test="handleCode != null" >
+        handle_code = #{handleCode,jdbcType=INTEGER},
+      </if>
+      <if test="handleMsg != null" >
+        handle_msg = #{handleMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xxl.job.admin.core.model.XxlJobTriggerHistory" >
+    update XXL_JOB_QRTZ_TRIGGER_HISTORY
+    set group_id = #{groupId,jdbcType=BIGINT},
+      job_id = #{jobId,jdbcType=BIGINT},
+      job_log_id = #{jobLogId,jdbcType=BIGINT},
+      handle_code = #{handleCode,jdbcType=INTEGER},
+      handle_msg = #{handleMsg,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

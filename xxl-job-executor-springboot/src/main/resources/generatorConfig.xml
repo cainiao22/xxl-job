@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry
+            location="C:/Users/QDHL/.m2/repository/mysql/mysql-connector-java/5.1.40/mysql-connector-java-5.1.40.jar" />
+
+    <context id="context1">
+        <property name="javaFileEncoding" value="utf-8"/>
+        <property name="" value=""/>
+        <commentGenerator>
+            <!-- 不生成注解信息 -->
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://10.37.5.111:3306/ds?characterEncoding=utf-8"
+                        userId="ds" password="123456!">
+        </jdbcConnection>
+        <javaModelGenerator targetPackage="com.xxl.job.executor.model" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mybatis" targetProject="src/main/resources/ds_mappers">
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="com.xxl.job.executor.mapper.ds" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+
+<!--   <table schema="ds" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" tableName="ds_jobnotify" domainObjectName="JobNotify" />-->
+
+        <!--<table schema="ds" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" tableName="ds_common_data_summary" domainObjectName="CommonDataSummary" >
+            <generatedKey column="ID" sqlStatement="postgreSql" identity="true"/>
+        </table>-->
+        <!--<table schema="ds" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" tableName="ds_common_data_sql" domainObjectName="CommonDataSql" >
+            <generatedKey column="ID" sqlStatement="postgreSql" identity="true"/>
+        </table>-->
+
+       <!--<table schema="ds" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" tableName="ds_config" domainObjectName="Config" >
+
+        </table>-->
+               <!--
+        <table schema="public" tableName="operation" domainObjectName="Operation" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true" ></table>
+        -->
+
+<!--    <table  tableName="ds_monitor_rules" domainObjectName="DsMonitorRules" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" ></table>-->
+    <table  tableName="ds_monitor_result" domainObjectName="DsMonitorResult" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" ></table>
+
+    </context>
+</generatorConfiguration>

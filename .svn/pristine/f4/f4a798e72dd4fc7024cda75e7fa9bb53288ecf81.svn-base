@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xxl.job.admin.dao.XxlJobTriggerDependencyDao" >
+  <resultMap id="BaseResultMap" type="com.xxl.job.admin.core.model.XxlJobTriggerDependency" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="job_log_id" property="jobLogId" jdbcType="BIGINT" />
+    <result column="parent_job_log_id" property="parentJobLogId" jdbcType="BIGINT" />
+    <result column="job_id" property="jobId" jdbcType="BIGINT" />
+    <result column="group_id" property="groupId" jdbcType="BIGINT" />
+    <result column="parent_job_id" property="parentJobId" jdbcType="BIGINT" />
+    <result column="parent_group_id" property="parentGroupId" jdbcType="BIGINT" />
+    <result column="trigger_type" property="triggerType" jdbcType="CHAR" />
+    <result column="job_status" property="jobStatus" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, job_log_id, parent_job_log_id, job_id, group_id, parent_job_id, parent_group_id,
+    trigger_type, job_status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from XXL_JOB_QRTZ_TRIGGER_DEPENDENCY
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from XXL_JOB_QRTZ_TRIGGER_DEPENDENCY
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xxl.job.admin.core.model.XxlJobTriggerDependency" >
+    insert into XXL_JOB_QRTZ_TRIGGER_DEPENDENCY (id, job_log_id, parent_job_log_id,
+    job_id, group_id, parent_job_id,
+    parent_group_id, trigger_type, job_status
+    )
+    values (#{id,jdbcType=BIGINT}, #{jobLogId,jdbcType=BIGINT}, #{parentJobLogId,jdbcType=BIGINT},
+    #{jobId,jdbcType=BIGINT}, #{groupId,jdbcType=BIGINT}, #{parentJobId,jdbcType=BIGINT},
+    #{parentGroupId,jdbcType=BIGINT}, #{triggerType,jdbcType=CHAR}, #{jobStatus,jdbcType=CHAR}
+    )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xxl.job.admin.core.model.XxlJobTriggerDependency" >
+    insert into XXL_JOB_QRTZ_TRIGGER_DEPENDENCY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="jobLogId != null" >
+        job_log_id,
+      </if>
+      <if test="parentJobLogId != null" >
+        parent_job_log_id,
+      </if>
+      <if test="jobId != null" >
+        job_id,
+      </if>
+      <if test="groupId != null" >
+        group_id,
+      </if>
+      <if test="parentJobId != null" >
+        parent_job_id,
+      </if>
+      <if test="parentGroupId != null" >
+        parent_group_id,
+      </if>
+      <if test="triggerType != null" >
+        trigger_type,
+      </if>
+      <if test="jobStatus != null" >
+        job_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="jobLogId != null" >
+        #{jobLogId,jdbcType=BIGINT},
+      </if>
+      <if test="parentJobLogId != null" >
+        #{parentJobLogId,jdbcType=BIGINT},
+      </if>
+      <if test="jobId != null" >
+        #{jobId,jdbcType=BIGINT},
+      </if>
+      <if test="groupId != null" >
+        #{groupId,jdbcType=BIGINT},
+      </if>
+      <if test="parentJobId != null" >
+        #{parentJobId,jdbcType=BIGINT},
+      </if>
+      <if test="parentGroupId != null" >
+        #{parentGroupId,jdbcType=BIGINT},
+      </if>
+      <if test="triggerType != null" >
+        #{triggerType,jdbcType=CHAR},
+      </if>
+      <if test="jobStatus != null" >
+        #{jobStatus,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xxl.job.admin.core.model.XxlJobTriggerDependency" >
+    update XXL_JOB_QRTZ_TRIGGER_DEPENDENCY
+    <set >
+      <if test="jobLogId != null" >
+        job_log_id = #{jobLogId,jdbcType=BIGINT},
+      </if>
+      <if test="parentJobLogId != null" >
+        parent_job_log_id = #{parentJobLogId,jdbcType=BIGINT},
+      </if>
+      <if test="jobId != null" >
+        job_id = #{jobId,jdbcType=BIGINT},
+      </if>
+      <if test="groupId != null" >
+        group_id = #{groupId,jdbcType=BIGINT},
+      </if>
+      <if test="parentJobId != null" >
+        parent_job_id = #{parentJobId,jdbcType=BIGINT},
+      </if>
+      <if test="parentGroupId != null" >
+        parent_group_id = #{parentGroupId,jdbcType=BIGINT},
+      </if>
+      <if test="triggerType != null" >
+        trigger_type = #{triggerType,jdbcType=CHAR},
+      </if>
+      <if test="jobStatus != null" >
+        job_status = #{jobStatus,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xxl.job.admin.core.model.XxlJobTriggerDependency" >
+    update XXL_JOB_QRTZ_TRIGGER_DEPENDENCY
+    set job_log_id = #{jobLogId,jdbcType=BIGINT},
+    parent_job_log_id = #{parentJobLogId,jdbcType=BIGINT},
+    job_id = #{jobId,jdbcType=BIGINT},
+    group_id = #{groupId,jdbcType=BIGINT},
+    parent_job_id = #{parentJobId,jdbcType=BIGINT},
+    parent_group_id = #{parentGroupId,jdbcType=BIGINT},
+    trigger_type = #{triggerType,jdbcType=CHAR},
+    job_status = #{jobStatus,jdbcType=CHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="getChildrenByDependencyJobLogId" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    from XXL_JOB_QRTZ_TRIGGER_DEPENDENCY
+    where parent_job_log_id = #{jobLogId} AND job_status='WAITING' AND trigger_type='MANUAL_TRIGGER'
+  </select>
+  <select id="getChildrenByDependencyJobId" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    from XXL_JOB_QRTZ_TRIGGER_DEPENDENCY
+    where parent_job_id = #{jobId} AND parent_group_id=#{jobGroup} AND job_status='WAITING' AND trigger_type='AUTOMATIC_TRIGGER'
+  </select>
+  <select id="getByJobLogId" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    from XXL_JOB_QRTZ_TRIGGER_DEPENDENCY
+    where job_log_id = #{jobLogId}
+  </select>
+</mapper>
